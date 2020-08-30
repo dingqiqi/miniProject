@@ -1,11 +1,16 @@
 <!--pages/me/me.wxml-->
 <view class="me-container">
-  <view wx:if="{{userInfo.openid}}">
-    <image src="{{userInfo.avatarUrl}}" class="avatar"></image>
-    <view>{{userInfo.nickName}}</view>
-  </view>
-  <view wx:else>
-    <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598198017150&di=4604966d22a1d86df75de425add3432f&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F57%2F28%2F01300000921826141405283668131.jpg" class="avatar"></image>
-    <view><button open-type="getUserInfo" size="mini" bindgetuserinfo="onUserInfo" type="primary">登陆</button></view>
-  </view>
+	<view wx:if="{{userInfo.openid}}">
+		<image src="{{userInfo.avatarUrl}}" class="avatar"></image>
+		<view class="margin-top">{{userInfo.nickName}}</view>
+	</view>
+	<view wx:else>
+		<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598198017150&di=4604966d22a1d86df75de425add3432f&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F57%2F28%2F01300000921826141405283668131.jpg" class="avatar"></image>
+		<view><button open-type="getUserInfo" size="mini" bindgetuserinfo="onUserInfo" type="primary">登陆</button></view>
+	</view>
+
+	<view wx:if="{{userInfo.openid}}">
+		<button type="primary" bindtap="scanBook" class="button" plain="false">添加图书</button>
+		<button open-type="contact" type="warn" class="button" plain="false">客服</button>
+	</view>
 </view>
