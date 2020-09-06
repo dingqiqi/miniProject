@@ -8,8 +8,12 @@ Page({
     pageSize: 3,
     isFinish: false,
   },
+  onPullDownRefresh() {
+    console.log("refresh")
+    this.getBooks(true)
+   },
   onReachBottom() {
-    console.log(this.data.isFinish)
+    console.log("加载更多")
     if (this.data.isFinish) {
       return
     }
@@ -19,7 +23,12 @@ Page({
       this.getBooks()
     })
   },
-  getBooks() {
+  getBooks(isInit) {
+    if(isInit){
+      this.setData({
+        pageNum: 0
+      })
+    }
     wx.showLoading({
       title: '"加载中"',
     })
@@ -38,7 +47,7 @@ Page({
           })
         }
 
-        if (this.data.pageNum > 0) {
+        if (!isInit) {
           this.setData({
             books: [...this.data.books, ...res.data]
           })
@@ -54,8 +63,7 @@ Page({
     })
   },
   onLoad: function () {
-    this.pageNum = 0
-    this.getBooks()
+    this.getBooks(true)
   },
 
 })
