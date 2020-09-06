@@ -38,6 +38,7 @@ async function getDouBanBookInfo(bookData) {
     rating: bookData.rating["star_count"] / bookData.rating["value"],
     image: bookData.cover_url,
     tags: tags,
+    summary:$("#link-report .intro").text(),
     auther: auther
   }
   console.log("-->", res)
